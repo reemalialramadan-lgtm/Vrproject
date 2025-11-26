@@ -1,0 +1,12 @@
+[application]
+config_version=4
+run/main_scene="res://scenes/Plaza.tscn"
+
+[filesystem]
+"res://scenes"=scenes
+"res://scripts"=scripts
+"res://translations"=translations
+"res://assets"=assets
+
+[rendering]
+quality/vram/streaming_pool/size=0

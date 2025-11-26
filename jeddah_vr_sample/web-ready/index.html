@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- A tiny A-Frame WebXR demo for quick headset testing.
+     Deploy this folder to Netlify or GitHub Pages (HTTPS) and open the URL in your headset browser. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jeddah Tower VR — WebXR demo</title>
+    <meta name="description" content="Tiny WebXR demo for Jeddah Tower VR prototype — open in headset browser to test" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <style>
+      body { margin: 0; font-family: system-ui, Arial, Helvetica, sans-serif; background: #0b1220; color: #fff; }
+      #ui { position: absolute; z-index: 9999; left: 16px; top: 16px; background: rgba(0,0,0,0.45); padding: 12px; border-radius: 8px; }
+      #ui h2 { margin: 0 0 6px 0; font-size: 14px; }
+      #ui p { margin: 0; font-size: 13px; opacity: 0.9; }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <h2>Jeddah Tower VR — WebXR demo</h2>
+      <p>Open this page in a WebXR-capable headset browser and tap "Enter VR".</p>
+      <p style="direction:rtl; font-weight:600;">للدخول إلى الواقع الافتراضي: اضغط زر "Enter VR" في متصفح سماعة الرأس</p>
+    </div>
+
+    <a-scene background="color: #0b1220" vr-mode-ui="enterVRButton: true">
+      <!-- Simple ground and sky -->
+      <a-sky color="#0b1220"></a-sky>
+      <a-plane rotation="-90 0 0" width="200" height="200" color="#101216" position="0 0 0"></a-plane>
+
+      <!-- A simple stylized Jeddah Tower placeholder (tall cylinder + top) -->
+      <a-entity position="0 0 -6">
+        <a-cylinder height="8" radius="0.45" color="#b9b9c8" position="0 4 0"></a-cylinder>
+        <a-cone height="1.25" radius-bottom="0.9" color="#f5f5f5" position="0 8.1 0"></a-cone>
+        <a-box depth="0.3" height="0.4" width="1.6" color="#ff9900" position="0 4.4 0"></a-box>
+      </a-entity>
+
+      <!-- Surrounding low buildings for skyline sense -->
+      <a-entity id="city" position="0 0 -20">
+        <a-box position="-6 1 -4" depth="6" height="2" width="3" color="#2a2f36"></a-box>
+        <a-box position="6 1 -4" depth="4" height="2" width="2" color="#2a2f36"></a-box>
+        <a-box position="10 1 -10" depth="8" height="2" width="3" color="#24303a"></a-box>
+      </a-entity>
+
+      <!-- Friendly instructions in-world -->
+      <a-entity position="0 1 -2">
+        <a-text value="Use controller / touch to move. Trigger = interact. Press the secondary button to enter the tower." width="4" color="#ffffff" position="0 1 0" align="center"></a-text>
+        <a-text value="لتجربة داخلية: اضغط الزر الثانوي" width="4" color="#ffd" position="0 0 0" align="center"></a-text>
+      </a-entity>
+
+      <!-- Basic camera + hands (works on headset) -->
+      <a-entity id="rig" position="0 1.6 1">
+        <a-camera wasd-controls-enabled="false"></a-camera>
+      </a-entity>
+
+      <!-- Light -->
+      <a-entity light="type: ambient; intensity: 0.9"></a-entity>
+      <a-entity light="type: directional; intensity: 0.6" position="-1 2 1"></a-entity>
+
+      <!-- Minimal interaction: click open a simple interior overlay -->
+      <a-entity id="enter-zone" geometry="primitive: box; height: 1.6; width: 2; depth: 0.1" material="color: #0047ab; opacity: 0.8" position="0 0.8 -3" class="clickable" event-set__enter="_event: click; visible: false"></a-entity>
+
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="tower-ext-scene"]
+
+[node name="TowerExterior" type="Node3D"]
+transform = Transform3D()
+
+[node name="TowerMesh" parent="." type="MeshInstance3D"]
+mesh = null
+
+[node name="Signage" parent="." type="Sprite3D"]
+texture = null
+
