@@ -4,6 +4,8 @@
 [node name="TowerExterior" type="Node3D"]
 transform = Transform3D()
 
+[ext_resource path="res://scenes/JeddahTower.tscn" type="PackedScene" id=3]
+
 [node name="TowerMesh" parent="." type="MeshInstance3D"]
 mesh = null
 
@@ -11,10 +13,7 @@ mesh = null
 texture = null
 
 # A simple prominent Jeddah Tower placeholder (cylinder-based) with a nicer material
-[node name="JeddahTower" parent="." type="MeshInstance3D"]
-mesh = SubResource( 1 )
-material_override = SubResource( 2 )
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+[node name="JeddahTowerInstance" parent="." instance=ExtResource( 3 )]
 
 # Add a directional light to improve outdoor lighting and shadows
 [node name="SunLight" parent="." type="DirectionalLight3D"]
@@ -22,6 +21,11 @@ light_energy = 2.0
 cast_shadow = true
 shadow_bias = 0.05
 transform = Transform3D( 0.707106, -0.408248, 0.577350, 0.0, 0.816497, 0.577350, -0.707106, -0.408248, 0.577350, 0, 10, 0 )
+
+[node name="ReflectionProbe" parent="." type="ReflectionProbe3D"]
+extents = Vector3( 200, 200, 200 )
+update_mode = 2 # Once
+ambient_light_energy = 0.3
 
 [sub_resource type="CylinderMesh" id=1]
 top_radius = 6.0

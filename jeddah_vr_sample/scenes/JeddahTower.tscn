@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="jeddah-tower-scene"]
+
+[node name="JeddahTower" type="Node3D"]
+transform = Transform3D()
+
+# Base wider section
+[node name="TowerBase" parent="." type="MeshInstance3D"]
+mesh = SubResource( 1 )
+material_override = SubResource( 4 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+# Mid tapering section
+[node name="TowerMid" parent="." type="MeshInstance3D"]
+mesh = SubResource( 2 )
+material_override = SubResource( 5 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0 )
+
+# Upper slender spire
+[node name="TowerTop" parent="." type="MeshInstance3D"]
+mesh = SubResource( 3 )
+material_override = SubResource( 6 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+
+# Emissive band to simulate windows/lighting
+[node name="LightBand" parent="." type="MeshInstance3D"]
+mesh = SubResource( 7 )
+material_override = SubResource( 8 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 20.0
+bottom_radius = 20.0
+height = 60.0
+radial_segments = 64
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 12.0
+bottom_radius = 18.0
+height = 90.0
+radial_segments = 64
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 3.0
+bottom_radius = 8.0
+height = 70.0
+radial_segments = 64
+
+[sub_resource type="CylinderMesh" id=7]
+top_radius = 19.0
+bottom_radius = 19.0
+height = 4.0
+radial_segments = 64
+
+[sub_resource type="StandardMaterial3D" id=4]
+albedo_color = Color( 0.82, 0.83, 0.85 )
+roughness = 0.4
+metallic = 0.05
+
+[sub_resource type="StandardMaterial3D" id=5]
+albedo_color = Color( 0.78, 0.79, 0.81 )
+roughness = 0.35
+metallic = 0.04
+
+[sub_resource type="StandardMaterial3D" id=6]
+albedo_color = Color( 0.75, 0.76, 0.78 )
+roughness = 0.28
+metallic = 0.02
+
+[sub_resource type="StandardMaterial3D" id=8]
+albedo_color = Color( 0.05, 0.12, 0.25 )
+emission = Color( 0.9, 0.7, 0.45 )
+emission_energy = 2.5
+roughness = 0.9
