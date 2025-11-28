@@ -1,11 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="tower-ext-scene"]
+
+[gd_scene load_steps=5 format=3 uid="tower-ext-scene"]
 
 [node name="TowerExterior" type="Node3D"]
 transform = Transform3D()
+
+[ext_resource path="res://scenes/JeddahTower.tscn" type="PackedScene" id=3]
 
 [node name="TowerMesh" parent="." type="MeshInstance3D"]
 mesh = null
 
 [node name="Signage" parent="." type="Sprite3D"]
 texture = null
+
+# A simple prominent Jeddah Tower placeholder (cylinder-based) with a nicer material
+[node name="JeddahTowerInstance" parent="." instance=ExtResource( 3 )]
+
+# Add a directional light to improve outdoor lighting and shadows
+[node name="SunLight" parent="." type="DirectionalLight3D"]
+light_energy = 2.0
+cast_shadow = true
+shadow_bias = 0.05
+transform = Transform3D( 0.707106, -0.408248, 0.577350, 0.0, 0.816497, 0.577350, -0.707106, -0.408248, 0.577350, 0, 10, 0 )
+
+[node name="ReflectionProbe" parent="." type="ReflectionProbe3D"]
+extents = Vector3( 200, 200, 200 )
+update_mode = 2 # Once
+ambient_light_energy = 0.3
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 6.0
+bottom_radius = 6.0
+height = 220.0
+radial_segments = 64
+
+[sub_resource type="StandardMaterial3D" id=2]
+albedo_color = Color( 0.85, 0.86, 0.88 )
+roughness = 0.35
+metallic = 0.05
+emission = Color( 0.01, 0.01, 0.015 )
+normal_enabled = true
 

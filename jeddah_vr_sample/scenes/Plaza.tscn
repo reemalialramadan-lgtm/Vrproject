@@ -4,8 +4,57 @@
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Tower" parent="." type="MeshInstance3D"]
-mesh = null # replace with tower mesh (glTF)
+mesh = null # replaced by instancing TowerExterior scene
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[ext_resource path="res://scenes/TowerExterior.tscn" type="PackedScene" id=2]
+
+[node name="TowerExteriorInstance" parent="." instance=ExtResource( 2 )]
+
+# World environment and post-processing for more realistic lighting and tonemapping
+[node name="WorldEnv" parent="." type="WorldEnvironment3D"]
+environment = SubResource( 3 )
+
+# Surrounding buildings (simple blocky meshes to give city context)
+[node name="Building1" parent="." type="MeshInstance3D"]
+mesh = SubResource( 4 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -80 )
+
+[node name="Building2" parent="." type="MeshInstance3D"]
+mesh = SubResource( 5 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, -40 )
+
+[node name="Building3" parent="." type="MeshInstance3D"]
+mesh = SubResource( 6 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 90 )
+
+[node name="Building4" parent="." type="MeshInstance3D"]
+mesh = SubResource( 7 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 70 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1 # Color
+background_color = Color( 0.56, 0.67, 0.8 )
+ambient_light_color = Color( 0.9, 0.92, 0.94 )
+ambient_light_energy = 0.6
+ssr_enabled = true
+ssr_max_steps = 64
+ssao_enabled = true
+ssao_radius = 2.0
+glow_enabled = true
+glow_strength = 0.5
+
+[sub_resource type="BoxMesh" id=4]
+size = Vector3( 30, 80, 30 )
+
+[sub_resource type="BoxMesh" id=5]
+size = Vector3( 20, 60, 20 )
+
+[sub_resource type="BoxMesh" id=6]
+size = Vector3( 28, 100, 28 )
+
+[sub_resource type="BoxMesh" id=7]
+size = Vector3( 36, 50, 36 )
 
 [node name="PlayerStart" parent="." type="Marker3D"]
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
