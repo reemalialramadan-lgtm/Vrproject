@@ -1,0 +1,6 @@
+# Arabic translations (sample)
+msgid "Enter Tower"
+msgstr "ادخل البرج"
+
+msgid "Exit"
+msgstr "الخروج"

@@ -1,0 +1,6 @@
+# English translations (sample)
+msgid "Enter Tower"
+msgstr "Enter Tower"
+
+msgid "Exit"
+msgstr "Exit"

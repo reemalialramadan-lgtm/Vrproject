@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="debug-overlay-scene"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+
+[node name="Panel" parent="." type="ColorRect"]
+color = Color(0, 0, 0, 0.6)
+anchor_right = 1.0
+anchor_bottom = 0.25
+rect_min_size = Vector2( 420, 220 )
+mouse_filter = 0
+
+[node name="Label" parent="Panel" type="RichTextLabel"]
+rect_position = Vector2( 8, 8 )
+rect_min_size = Vector2( 404, 204 )
+bbcode_enabled = true
+custom_colors/font_color = Color(1, 1, 1, 1.0)
+
+[node name="script" parent="." instance=ExtResource( 1 )]
+
+[ext_resource path="res://scripts/debug_overlay.gd" type="Script" id=1]
