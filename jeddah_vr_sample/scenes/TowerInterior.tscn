@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="interior-scene"]
+[gd_scene load_steps=3 format=3 uid="interior-scene"]
+
+[ext_resource path="res://scenes/DebugOverlay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/interior_ui_manager.gd" type="Script" id=2]
 
 [node name="TowerInterior" type="Node3D"]
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -7,13 +10,12 @@ transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="CanvasLayer" parent="." type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="ExitBtn" parent="CanvasLayer" type="Button"]
-text = "الخروج" # Arabic: Exit
+text = "الخروج"
 rect_position = Vector2( 20, 20 )
 rect_min_size = Vector2( 160, 48 )
-
-[ext_resource path="res://scenes/DebugOverlay.tscn" type="PackedScene" id=1]
 
 [node name="DebugOverlayInstance" parent="CanvasLayer" instance=ExtResource( 1 )]
 
